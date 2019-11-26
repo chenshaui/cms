@@ -8,3 +8,6 @@ spring:
     url: jdbc:mysql://47.95.198.82:3306/cms?useunicode=true;&characterEncoding=utf8
     username: root
     password: root
+
+  jpa:
+    show-sql: true
