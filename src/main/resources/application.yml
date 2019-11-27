@@ -1,7 +1,7 @@
-#配置服务器端口
+
 server:
   port: 9997
-#配置数据库连接
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,3 +11,6 @@ spring:
 
   jpa:
     show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
