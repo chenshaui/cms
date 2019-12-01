@@ -1,7 +1,9 @@
 package com.briup.cms.service.impl;
 
 import com.briup.cms.bean.Category;
+import com.briup.cms.bean.ex.CategoryEx;
 import com.briup.cms.dao.ICategoryDao;
+import com.briup.cms.dao.ex.ICategoryExDao;
 import com.briup.cms.exception.CustomerException;
 import com.briup.cms.service.ICategoryService;
 import com.briup.cms.util.CodeUtil;
@@ -14,6 +16,8 @@ import java.util.List;
 public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private ICategoryDao categoryDao;
+    @Autowired
+    private ICategoryExDao categoryExDao;
     @Override
     public void addCategory(Category category) throws CustomerException {
         if (category == null) {
@@ -37,5 +41,12 @@ public class CategoryServiceImpl implements ICategoryService {
     public List<Category> findAll() throws CustomerException {
         List<Category> categories = categoryDao.findAll();
         return categories;
+    }
+
+    @Override
+    public List<CategoryEx> findAllCategory() throws CustomerException {
+        List<CategoryEx> categoryExDaoAll = categoryExDao.findAll();
+
+        return categoryExDaoAll;
     }
 }

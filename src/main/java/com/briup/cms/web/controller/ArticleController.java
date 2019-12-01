@@ -18,7 +18,7 @@ import java.util.List;
 @Api(description = "信息管理")
 @RestController
 @RequestMapping("/article")
-public class ArticleControlle {
+public class ArticleController {
    @Autowired
     private IArticleService articleService;
     @PostMapping("/add")
@@ -29,7 +29,7 @@ public class ArticleControlle {
     }
 
     @GetMapping("/delete")
-    @ApiOperation(value = "删除单个信息", notes = "category.code category.name 不需要输入")
+    @ApiOperation("删除单个信息")
     @ApiImplicitParam(value = "信息id" ,required = true, dataType = "int", name = "id", paramType = "query")
     public Message deleteArticle(int id){
         articleService.deleteArticle(id);
@@ -50,6 +50,7 @@ public class ArticleControlle {
     }
     @GetMapping("/findById")
     @ApiOperation(value = "根据id查询")
+    @ApiImplicitParam(name = "id", value = "信息id" ,required = true, dataType = "int", paramType = "query")
     public Message<Article> findById(int id){
         Article article = articleService.findById(id);
         return MessageUtil.success(article);
